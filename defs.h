@@ -48,4 +48,35 @@ enum {
 // false = 0; true = 1
 enum { FALSE, TRUE};
 
+// estrutura do tabuleiro
+typedef struct {
+
+    int pieces[BRD_SQ_NUM];
+    U64 pawns[3];
+
+    int KingSq[2];
+
+    int side;
+    int enPassant;
+    int fiftyMove;
+
+    int ply;
+    int hisPly;
+
+    // chave unica de certa posicao
+    U64 posKey;
+
+    int pceNum[13];
+
+    // qualquer peca que n seja peao
+    int bigPce[3];
+
+    // torres e rainhas
+    int majPce[3];
+
+    // bispos e cavalos
+    int minPce[3];
+
+} S_BOARD;
+
 #endif
