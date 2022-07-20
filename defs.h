@@ -8,6 +8,8 @@ typedef unsigned long long U64;
 // numero de quadrados do tabuleiro
 #define BRD_SQ_NUM 120
 
+#define MAXGAMEMOVES 2048
+
 // definir todas as pecas
 /* enum de todas as pecas
  * w - indica brancas "white"
@@ -48,6 +50,22 @@ enum {
 // false = 0; true = 1
 enum { FALSE, TRUE};
 
+// K = KING, Q = QUEEN
+// WKCA = WHITE KING CASTLE (ROQUE)
+// 1000 0100 0010 0001
+// Permissao para roque
+enum { WKCA = 1, WQCA = 2, BKCA = 4, BQCA = 8 };
+
+typedef struct {
+	
+	int move;
+	int castlePerm;
+	int enPassant;
+	int fiftyMove;
+	U64 posKey;
+	
+} S_UNDO;
+
 // estrutura do tabuleiro
 typedef struct {
 
@@ -62,6 +80,8 @@ typedef struct {
 
     int ply;
     int hisPly;
+    
+    int castlePerm;
 
     // chave unica de certa posicao
     U64 posKey;
@@ -76,6 +96,8 @@ typedef struct {
 
     // bispos e cavalos
     int minPce[3];
+    
+    S_UNDO history[MAXGAMEMOVES];
 
 } S_BOARD;
 
