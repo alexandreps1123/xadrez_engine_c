@@ -1,6 +1,23 @@
 #ifndef DEFS_H
 #define DEFS_H
 
+#include "stdlib.h"
+
+#define DEBUG
+
+#ifndef DEBUG
+#define ASSERT(n)
+#else
+#define ASSERT(n) \
+if(!(n)) { \
+printf("%s - Failed", #n); \
+printf("On %s ", __DATE__); \
+printf("At %s ", __TIME__); \
+printf("In File %s ", __FILE__); \
+printf("At Line %d\n", __LINE__); \
+exit(1); }
+#endif
+
 typedef unsigned long long U64;
 
 #define NAME "Parkus 1.0"
@@ -98,6 +115,10 @@ typedef struct {
     int minPce[3];
     
     S_UNDO history[MAXGAMEMOVES];
+
+    // lista de pecas
+    // 13 pecas com possibilidade de existir 10 torres, por exemplo
+    int pList[13][10];
 
 } S_BOARD;
 
