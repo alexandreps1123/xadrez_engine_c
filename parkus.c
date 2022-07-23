@@ -4,6 +4,11 @@
 int main() {
 
 	AllInit();
+
+	int a = 1;
+	int b = 2;
+
+	ASSERT(a==b);
 	
 	for(int index = 0; index < BRD_SQ_NUM; ++index) {
 		if(index%10==0) printf("\n");
@@ -16,6 +21,8 @@ int main() {
 		if(index%8==0) printf("\n");
 		printf("%5d", Sq64ToSq120[index]);
 	}
+
+	printf("\n");
 
     return 0;
 }
