@@ -1,2 +1,2 @@
 all:
-	gcc parkus.c init.c -o parkus
+	gcc parkus.c init.c bitboards.c -o parkus
