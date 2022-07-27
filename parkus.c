@@ -4,19 +4,19 @@
 int main() {
 
 	AllInit();
+    
+    U64 playBitBoard = 0ULL;
 
-	U64 playBitBoard = 0ULL;
+    playBitBoard |= (1ULL << SQ64(D2));
+    playBitBoard |= (1ULL << SQ64(D3));
+    playBitBoard |= (1ULL << SQ64(D4));
 
-	printf("Start:\n\n");
-	PrintBitBoard(playBitBoard);
-
-	playBitBoard |= (1Ull << SQ64(D2));
-	printf("D2 Added:\n\n");
-	PrintBitBoard(playBitBoard);
-
-	playBitBoard |= (1Ull << SQ64(G2));
-	printf("G2 Added:\n\n");
-	PrintBitBoard(playBitBoard);
-
+    int sq64 = 0;
+    while (playBitBoard) {
+        sq64 = POP(&playBitBoard);
+        printf("popped:%d\n", sq64);
+        PrintBitBoard(playBitBoard);
+    }
+    
     return 0;
 }
